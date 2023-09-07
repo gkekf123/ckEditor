@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" th:href="@{../css/fcltt/fcltt.css}" />
+	<script th:src="@{../js/fcltt/fcltt.js}"></script>
+</head>
+<th:block th:replace="~{./include/basicLayout :: setContent(~{::.wrap})}">
+
+	<!-- wrap start -->
+	<div class="wrap">
+		<!-- main_con start -->
+		<div id="main_con">
+			<div id="nav_menu">
+				<div id="lnb">
+					<h2 class="title">모집공고</h2>
+					<div class="menu">
+						<ul>
+							<li class="has-sub"><a href="#" title="이용문의 닫기 (열림)">모집공고</a>
+								<ul class="sub" style="display: none;">
+									<li><a href="#">모집공고 등록</a></li>
+									<li><a href="#">모집공고 목록</a></li>
+								</ul>
+							</li>
+							<li class="has-sub"><a href="#" title="이용문의 닫기 (열림)">공지사항</a>
+								<ul class="sub" style="display: none;">
+									<li><a href="#">공지사항 등록</a></li>
+									<li><a href="#">공지사항 목록</a></li>
+								</ul>
+							</li>
+							<li class="has-sub"><a href="#" title="이용문의 닫기 (열림)">FAQ</a>
+								<ul class="sub" style="display: none;">
+									<li><a href="#">FAQ 등록</a></li>
+									<li><a href="#">FAQ 목록</a></li>
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			<!-- contents start -->
+			<div id="contents">
+
+				<style>
+					@media screen and (max-width: 1024px) {
+						.table-responsive>table>tbody>tr td[data-cell-header]:before {
+							width: 30%;
+							margin: 0 0 0 0;
+							vertical-align: unset;
+						}
+					}
+
+					.table-responsive>table>tbody>tr:hover {
+						background-color: #e6f8ff;
+					}
+
+					@media screen and (min-width: 1100px) {
+						#select-box-margin-left-10 {
+							margin-left: 6px;
+						}
+					}
+				</style>
+
+				<!-- detail-content -->
+				<article id="detail-content">
+					<!-- form start -->
+					<form id="announceForm" name="announceForm"
+						action="announceRegistForm"
+						method="post">
+						<div class="heading-wrap container">
+							<h3 class="heading1">
+								<span>재판 조력자 모집공고 등록</span>
+							</h3>
+						</div>
+
+						<!-- 본문컨텐츠 영역 start -->
+						<div class="container">
+
+							<!-- box box1 start -->
+							<div class="top-box">
+								<table>
+									<!-- 첨부파일 start -->
+									<tr class="top-box-tr-one">
+										<td class="top-box-one">
+											<div id="fileControl" style="display: none"></div>
+											<span class="top-box-one-span-one">작성자 : <span
+													th:text="${admin_id}"></span></span>
+										</td>
+										<td class="top-box-two">
+											<div id="fileControl" style="display: none"></div>
+											<span>최초 입력일 시 : <span th:text="${announce_first_date}"></span></span>
+											<span>최종 변경일 시 : <span th:text="${announce_last_date}"></span></span>
+										</td>
+									</tr>
+									<tr class="top-box-tr-two">
+
+									</tr>
+								</table>
+							</div>
+							<!-- //box box1 end -->
+						</div>
+						<!-- //본문컨텐츠 영역 end -->
+
+						<!-- 공고 내용 start -->
+						<div class="searchform searchform2">
+
+							<!-- searchform-wrap start -->
+							<div class="searchform-wrap">
+
+								<!-- 등록 양식 start -->
+								<div class="table table-responsive">
+
+
+									<table>
+
+										<colgroup>
+											<col style="width: 30%">
+											<col style="width: 70%">
+										</colgroup>
+										<tbody>
+
+											<tr>
+												<th scope="row" class="txt-left">
+													<span class="txt-left" title="제목">제목</span>
+												</th>
+												<td data-cell-header="제목" class="txt-left">
+													<input name="announce_title" id="title" value="" class="cm_inptxt"
+														type="text">
+												</td>
+											</tr>
+											<tr>
+												<th scope="row" class="txt-left">
+													<span class="search_th">게시 시작일</span>
+												</th>
+												<td data-cell-header="게시 시작일" class="txt-left">
+													<div class="fcltt_phone" style="display: inline-block">
+														<!-- 달력 start -->
+														<div class="calander-box">
+
+															<input type="text" class="datepicker" readonly
+																placeholder="날짜선택" name="announce_start_date" value="" /> -
+															<input type="text" class="datepicker" readonly
+																placeholder="날짜선택" name="announce_end_date" value="" />
+														</div>
+														<!-- 달력 end -->
+													</div>
+
+
+												</td>
+											</tr>
+											<tr>
+												<th scope="row" class="txt-left">
+													<span class="essential-txt" title="조력자 분류">조력자 분류</span>
+												</th>
+												<td data-cell-header="생년월일" class="txt-left">
+													<select name="" id="" class="cm_inptxt fclttCategory">
+														<option value="">조력자 대분류</option>
+														<option value="">통번역인</option>
+														<option value="">조정위원</option>
+														<option value="">전문심리위원</option>
+														<option value="">상담위원</option>
+													</select>
+													<select name="" id="" class="cm_inptxt fclttCategory">
+														<option value="">조력자 중분류</option>
+														<option value="">중분류1</option>
+														<option value="">중분류2</option>
+														<option value="">중분류3</option>
+														<option value="">중분류5</option>
+													</select>
+													<select name="" id="" class="cm_inptxt fclttCategory">
+														<option value="">조력자 소분류</option>
+														<option value="">소분류1</option>
+														<option value="">소분류2</option>
+														<option value="">소분류3</option>
+														<option value="">소분류5</option>
+													</select>
+												</td>
+											</tr>
+
+											<tr>
+												<th scope="row" class="txt-left">
+													<span>내용</span>
+												</th>
+												<td data-cell-header="이메일" class="txt-left">
+													<!-- ckEditor start -->
+
+													<div id="editor">
+													</div>
+													<!-- //ckEditor end -->
+												</td>
+											</tr>
+
+
+										</tbody>
+									</table>
+								</div>
+								<!-- //등록 양식 end -->
+							</div>
+							<!-- //searchform-wrap end -->
+						</div>
+						<!-- //공고 내용 end -->
+					</form>
+					<!-- //form end -->
+
+				</article>
+				<!-- //detail-content end -->
+			</div>
+			<!-- //contents end -->
+		</div>
+		<!-- //contents end -->
+
+		<!-- 페이지 이동 버튼 -->
+		<div class="fclttRegist_btn">
+			<button type="button" class="fcltt_btn1">등록</button>
+			<button type="button" class="fcltt_btn2">취소</button>
+		</div>
+		<!-- //페이지 이동 버튼 end -->
+	</div>
+	<!-- //main_con end -->
+	</div>
+	<!-- //wrap end -->
+</th:block>
+
+<!-- ckEditor start -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<script>
+	ClassicEditor.create(document.querySelector('#editor'), {
+		language: "ko"
+	});
+</script>
+<!-- // ckEditor end -->
+
+<!--
+	
+	폼데이터 start
+<script>
+    ClassicEditor.create(document.querySelector('#editor'), {
+        language: "ko"
+    }).then(editor => {
+        editor.model.document.on('change', () => {
+            // 에디터 내용이 변경될 때마다 내용을 숨겨진 폼 필드에 업데이트
+            document.querySelector('#announce_content').value = editor.getData();
+        });
+    });
+</script>
+//폼데이터 end
+	
+-->
+
+
+<style>
+	.ck-editor__editable {
+		height: 400px;
+	}
+
+	.ck-content {
+		font-size: 12px;
+	}
+</style>
+
+</html>
